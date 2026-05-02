@@ -1,24 +1,5 @@
 package dam_a50758.mvvmweatherapp.data
 
-// https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&daily=uv_index_max&hourly=pressure_msl&current=wind_speed_10m,wind_direction_10m,temperature_2m,weather_code,is_day&timezone=Europe%2FLondon&forecast_days=3
-
-/*
-Hourly weather variables:
-    sea_level_pressure
-
-
-Daily weather variables:
-    uv_index_max
-
-
-Current weather:
-    temperature_2m
-    is_day
-    weather_code
-    wind_speed_10m
-    wind_direction_10m
-*/
-
 @Serializable
 data class WeatherData(
     val latitude: Float,
@@ -50,6 +31,26 @@ data class Daily(
     val time: List<String>,
     val uv_index_max: List<Float>
 )
+
+// https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&daily=uv_index_max&hourly=pressure_msl&current=wind_speed_10m,wind_direction_10m,temperature_2m,weather_code,is_day&timezone=Europe%2FLondon&forecast_days=3
+
+/*
+Hourly weather variables:
+    sea_level_pressure
+
+
+Daily weather variables:
+    uv_index_max
+
+
+Current weather:
+    temperature_2m
+    is_day
+    weather_code
+    wind_speed_10m
+    wind_direction_10m
+*/
+
 
 /*
 api response JSOn example:

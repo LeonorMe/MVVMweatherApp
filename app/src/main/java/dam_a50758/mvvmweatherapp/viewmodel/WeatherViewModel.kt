@@ -17,21 +17,14 @@ class WeatherViewModel(
     }
 
     fun fetchWeather(){
-        // get current lat/lon from state
         val lat = _uiState.value.latitude
         val lon = _uiState.value.longitude
 
-        
-        // convert API data in UI state
-        // getWeather() is suspend and ViewModel needs a coroutine
         viewModelScope.launch{
-            // call WeatherApiClient.getWeather(lat, lon)
             val weather = WeatherApiClient.getWeather(lat, lon)
 
             if (weather != null){
-                // update _uiState
                 _uiState.value = _uiState.value.copy(
-                    // data mapping
                     temperature = weather.current.temperature_2m,
                     windSpeed: weather.current.wind_speed_10m,
                     windDirection: weather.current.wind_direction_10m,

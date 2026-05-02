@@ -22,19 +22,5 @@ class MainActivity : ComponentActivity() {
                 WeatherUI()
             } 
         }
-
-    
-        
-        //lifecycleScope.fetchWeather()
-
-        /*
-        val lat = 38.0
-        val lon = -9.4
-        
-
-        viewModelscope.lauch {
-            WeatherApiClient.getWeather(lat, lon) 
-        }
-        */
     }
 }
