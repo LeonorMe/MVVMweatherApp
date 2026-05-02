@@ -1,3 +1,5 @@
+package dam_a50758.mvvmweatherapp.data
+
 // https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&daily=uv_index_max&hourly=pressure_msl&current=wind_speed_10m,wind_direction_10m,temperature_2m,weather_code,is_day&timezone=Europe%2FLondon&forecast_days=3
 
 /*

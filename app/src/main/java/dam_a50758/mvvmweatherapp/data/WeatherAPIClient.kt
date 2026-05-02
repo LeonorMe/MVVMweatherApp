@@ -1,3 +1,4 @@
+package dam_a50758.mvvmweatherapp.data
 
 object WeatherApiClient{
 
