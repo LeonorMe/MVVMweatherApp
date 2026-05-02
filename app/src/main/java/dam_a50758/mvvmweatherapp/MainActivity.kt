@@ -19,5 +19,28 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val configuration = LocalConfiguration.current
+
+        setContent{
+            if(configuration.orientation == Configuration.ORIENTATION_LANDSCAPE){
+                LandscapeWeatherUI()
+            } else{
+                WeatherUI()
+            }
+            
+        }
+
+        //lifecycleScope.fetchWeather()
+
+        /*
+        val lat = 38.0
+        val lon = -9.4
+        
+
+        viewModelscope.lauch {
+            WeatherApiClient.getWeather(lat, lon) 
+        }
+        */
     }
 }
