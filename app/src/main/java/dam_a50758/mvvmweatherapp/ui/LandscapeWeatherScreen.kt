@@ -1,9 +1,12 @@
 package dam_a50758.mvvmweatherapp.uiState
 
-@Compoosable 
+import androidx.compose.runtime.*
+import androidx.compose.ui.text.input.TextFieldValue
+
+@Composable 
 fun LandscapeWeatherUI(
     weatherViewModel: WeatherViewModel = viewModel()
-
+){
     val uiState by weatherViewModel.uiState.collectAsState()
 
     val latitude = uiState.latitude 
@@ -17,46 +20,45 @@ fun LandscapeWeatherUI(
     val isDay = uiState.isDay
     val uvIndexMax = uiState.uvIndexMax
 
-    Row{
-        Column{
-            TextField(
-                value = latitude.toString(),
-                onValueChange = {newValue ->
-                    newValue.toFloatOrNull()?.let {
-                        weatherViewModel.updateLatitude(it)
+    Column{
+        Row{
+            Column{
+                TextFieldValue(
+                    value = latitude.toString(),
+                    onValueChange = {newValue ->
+                        newValue.toFloatOrNull()?.let {
+                            weatherViewModel.updateLatitude(it)
+                        }
                     }
-                }
-            )
-    
-            TextField(
-                value = longitude.toString(),
-                onValueChange = {newValue ->
-                    newValue.toFloatOrNull()?.let {
-                        weatherViewModel.updateLongitude(it)
+                )
+        
+                TextFieldValue(
+                    value = longitude.toString(),
+                    onValueChange = {newValue ->
+                        newValue.toFloatOrNull()?.let {
+                            weatherViewModel.updateLongitude(it)
+                        }
                     }
-                }
-            )
-        }
+                )
+            }
 
-        Column{
-            Text("Latitude: $latitude")
-            Text("Longitude: $longitude")
-            Text("Temperature: $temperature")
-            Text("Wind Speed: $windSpeed")
-            Text("Wind Direction: $windDirection")
-            Text("Weather Code: $weatherCode")
-            Text("Pressure: $seaLevelPressure")
-            Text("Time: $time")
-            Text("is Day: $isDay")
-            Text("UV Index Max: $uvIndexMax")
-        }
-
-        Column{
-            Button(onClick = {
-                weatherViewModel.fetchWeather()
-            }){
-                Text("Update")
+            Column{
+                Text("Latitude: $latitude")
+                Text("Longitude: $longitude")
+                Text("Temperature: $temperature")
+                Text("Wind Speed: $windSpeed")
+                Text("Wind Direction: $windDirection")
+                Text("Weather Code: $weatherCode")
+                Text("Pressure: $seaLevelPressure")
+                Text("Time: $time")
+                Text("is Day: $isDay")
+                Text("UV Index Max: $uvIndexMax")
             }
         }
+        Button(onClick = {
+            weatherViewModel.fetchWeather()
+        }){
+            Text("Update")
+        }
     }
-)
+}

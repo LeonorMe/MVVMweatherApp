@@ -1,5 +1,9 @@
 package dam_a50758.mvvmweatherapp.data
 
+import io.ktor.client.*
+import io.ktor.client.engine.cio.*
+import kotlinx.serialization.Serializable
+
 object WeatherApiClient{
 
     private val client = HttpClient {

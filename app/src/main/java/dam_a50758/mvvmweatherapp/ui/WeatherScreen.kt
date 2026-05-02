@@ -1,10 +1,25 @@
 package dam_a50758.mvvmweatherapp.uiState
 
-@Compoosable 
+import androidx.compose.runtime.*
+import androidx.compose.ui.text.input.TextFieldValue
+/* 
+@Composable
+fun WeatherContent(
+    uiState: WeatherUiState,
+    onLatitudeChange: (Float) -> Unit,
+    onLongitudeChange: (Float) -> Unit,
+    onFetch: () -> Unit
+)
+*/
+@Composable 
 fun WeatherUI(
     weatherViewModel: WeatherViewModel = viewModel()
+){
 
     val uiState by weatherViewModel.uiState.collectAsState()
+
+    //var latField by remember {mutableStateOf(TextFieldValue(uiState.latitude.toString))}
+    //var lonField by remember {mutableStateOf(TextFieldValue(uiState.longitude.toString))}
 
     val latitude = uiState.latitude 
     val longitude = uiState.longitude
@@ -18,7 +33,7 @@ fun WeatherUI(
     val uvIndexMax = uiState.uvIndexMax
 
     Column{
-        TextField(
+        TextFieldValue(
             value = latitude.toString(),
             onValueChange = {newValue ->
                 newValue.toFloatOrNull()?.let {
@@ -27,7 +42,7 @@ fun WeatherUI(
             }
         )
 
-        TextField(
+        TextFieldValue(
             value = longitude.toString(),
             onValueChange = {newValue ->
                 newValue.toFloatOrNull()?.let {
@@ -53,4 +68,4 @@ fun WeatherUI(
             Text("Update")
         }
     }
-)
+}
