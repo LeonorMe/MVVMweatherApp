@@ -1,5 +1,3 @@
-// TODO from CoolWeatherApp
-
 // https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&daily=uv_index_max&hourly=pressure_msl&current=wind_speed_10m,wind_direction_10m,temperature_2m,weather_code,is_day&timezone=Europe%2FLondon&forecast_days=3
 
 /*
@@ -23,23 +21,25 @@ Current weather:
 data class WeatherData(
     val latitude: Float,
     val longitude: Float,
-    val current: Current,
-    val hourly: Hourly,
-    val daily: Daily
+    val current: Current?,
+    val hourly: Hourly?,
+    val daily: Daily?
 )
 
 @Serializable
 data class Current(
     val time: String,
     val wind_speed_10m: Float,
-    val wind_direction_10m": Int,
+    val wind_direction_10m: Int,
     val temperature_2m: Float,
-    val weather_code: Int,
+    @SerialName("weather_code")
+    val weatherCode: Int,
     val is_day: Int
 )
 
 @Serializable
 data class Hourly(
+    val time: List<String>,
     val pressure_msl: List<Float>
 )
 
